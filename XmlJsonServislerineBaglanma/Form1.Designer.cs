@@ -85,6 +85,7 @@
             this.btnHaritadaGoster.TabIndex = 15;
             this.btnHaritadaGoster.Text = "Haritada Göster";
             this.btnHaritadaGoster.UseVisualStyleBackColor = true;
+            this.btnHaritadaGoster.Click += new System.EventHandler(this.btnHaritadaGoster_Click);
             // 
             // lblHereNow
             // 
@@ -130,6 +131,7 @@
             this.lstFirmalar.Name = "lstFirmalar";
             this.lstFirmalar.Size = new System.Drawing.Size(186, 329);
             this.lstFirmalar.TabIndex = 10;
+            this.lstFirmalar.SelectedIndexChanged += new System.EventHandler(this.lstFirmalar_SelectedIndexChanged);
             // 
             // Form1
             // 

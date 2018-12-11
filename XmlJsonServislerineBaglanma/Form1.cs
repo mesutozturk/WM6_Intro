@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace XmlJsonServislerineBaglanma
         {
             try
             {
-                fourFactory=new FourFactory();
+                fourFactory = new FourFactory();
                 dovizler = DovizFactory.Dovizler;
                 //listBox1.Items.AddRange(dovizler.ToArray());
                 listBox1.DataSource = dovizler;
@@ -58,8 +59,43 @@ namespace XmlJsonServislerineBaglanma
         private void btnGetir_Click(object sender, EventArgs e)
         {
             var liste = fourFactory.Firmalar;
-            lstFirmalar.DataSource = liste.OrderBy(x=>x.name).ToList();
+            lstFirmalar.DataSource = liste.OrderBy(x => x.name).ToList();
             lstFirmalar.DisplayMember = "name";
+        }
+
+        private Four.Venue seciliFirma;
+        private void lstFirmalar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstFirmalar.SelectedItem == null) return;
+            seciliFirma = lstFirmalar.SelectedItem as Four.Venue;
+            lblFirmaAdi.Text = seciliFirma.name;
+            lblAdres.Text = seciliFirma.location.address;
+        }
+
+        private BrowserForm form;
+        private void btnHaritadaGoster_Click(object sender, EventArgs e)
+        {
+            if (seciliFirma == null) return;
+            string enlem = seciliFirma.location.lat.ToString().Replace(",", ".");
+            string boylam = seciliFirma.location.lng.ToString().Replace(",", ".");
+            string url = $"https://www.google.com/maps/@{enlem},{boylam},20z";
+
+            if (form == null || form.IsDisposed)
+            {
+                form = new BrowserForm(new Uri(url), seciliFirma.name);
+                form.StartPosition = FormStartPosition.CenterScreen;
+                //form.WindowState = FormWindowState.Maximized;
+                form.Show();
+            }
+
+            //form = form == null ? new BrowserForm(new Uri(url), seciliFirma.name) : form;
+
+            //form = form ?? new BrowserForm(new Uri(url), seciliFirma.name);
+            //form.StartPosition = FormStartPosition.CenterScreen;
+            ////form.WindowState = FormWindowState.Maximized;
+            //form.Show();
+
+            //Process.Start(url);
         }
     }
 }
