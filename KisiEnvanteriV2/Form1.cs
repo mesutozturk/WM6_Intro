@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -28,7 +29,11 @@ namespace KisiEnvanteriV2
                 yeniKisi.Email = txtEmail.Text;
                 yeniKisi.Telefon = txtTelefon.Text;
                 yeniKisi.TCKN = txtTckn.Text;
-
+                if (memoryStream.Length > 0)
+                {
+                    yeniKisi.Fotograf = memoryStream.ToArray();
+                }
+                memoryStream = new MemoryStream();
                 kisiler.Add(yeniKisi);
                 //MessageBox.Show($"Hosgeldin {yeniKisi.Ad} {yeniKisi.Soyad}");
                 FormuTemizle();
@@ -53,6 +58,8 @@ namespace KisiEnvanteriV2
                     (control as CheckBox).Checked = false;
                 else if (control is ListBox lstBox)
                     lstBox.Items.Clear();
+                else if (control is PictureBox pbox)
+                    pbox.Image = null;
             }
         }
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -121,6 +128,10 @@ namespace KisiEnvanteriV2
             txtEmail.Text = seciliKisi.Email;
             txtTelefon.Text = seciliKisi.Telefon;
             txtTckn.Text = seciliKisi.TCKN;
+            if (seciliKisi.Fotograf != null && seciliKisi.Fotograf.Length > 0)
+            {
+                pictureBox1.Image = new Bitmap(new MemoryStream(seciliKisi.Fotograf));
+            }
         }
 
         private void dışarıAktarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,8 +215,30 @@ namespace KisiEnvanteriV2
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Bir hata olustu: "+ex.Message);
+                    MessageBox.Show("Bir hata olustu: " + ex.Message);
                 }
+            }
+        }
+        MemoryStream memoryStream = new MemoryStream();
+        int bufferSize = 64;
+        byte[] resimArray = new byte[64];
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            dosyaAc.Title = "Bir fotoğraf dosyasını seçiniz";
+            dosyaAc.Filter = "JPG | *.jpg";
+            dosyaAc.Multiselect = false;
+            dosyaAc.FileName = string.Empty;
+            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (dosyaAc.ShowDialog() == DialogResult.OK)
+            {
+                FileStream dosya = File.Open(dosyaAc.FileName, FileMode.Open);
+                while (dosya.Read(resimArray, 0, bufferSize) != 0)
+                {
+                    memoryStream.Write(resimArray, 0, resimArray.Length);
+                }
+                dosya.Close();
+                dosya.Dispose();
+                pictureBox1.Image = new Bitmap(memoryStream);
             }
         }
     }

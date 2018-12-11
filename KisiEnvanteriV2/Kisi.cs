@@ -72,7 +72,7 @@ namespace KisiEnvanteriV2
                 this._tckn = value;
             }
         }
-
+        public byte[] Fotograf { get; set; }
         private void NameValid(string value, string propertyName)
         {
             foreach (char harf in value)

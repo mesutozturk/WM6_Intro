@@ -202,8 +202,10 @@
             this.pictureBox1.Location = new System.Drawing.Point(195, 30);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(139, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // menuStrip1
             // 
@@ -233,7 +235,7 @@
             this.içeriAktarToolStripMenuItem,
             this.dışarıAktarToolStripMenuItem});
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.xMLToolStripMenuItem.Text = "&XML";
             // 
             // içeriAktarToolStripMenuItem
@@ -258,20 +260,20 @@
             this.içeriAktarToolStripMenuItem1,
             this.dışarıAktarToolStripMenuItem1});
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.jSONToolStripMenuItem.Text = "&JSON";
             // 
             // içeriAktarToolStripMenuItem1
             // 
             this.içeriAktarToolStripMenuItem1.Name = "içeriAktarToolStripMenuItem1";
-            this.içeriAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.içeriAktarToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.içeriAktarToolStripMenuItem1.Text = "&İçeri Aktar";
             this.içeriAktarToolStripMenuItem1.Click += new System.EventHandler(this.içeriAktarToolStripMenuItem1_Click);
             // 
             // dışarıAktarToolStripMenuItem1
             // 
             this.dışarıAktarToolStripMenuItem1.Name = "dışarıAktarToolStripMenuItem1";
-            this.dışarıAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dışarıAktarToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.dışarıAktarToolStripMenuItem1.Text = "&Dışarı Aktar";
             this.dışarıAktarToolStripMenuItem1.Click += new System.EventHandler(this.dışarıAktarToolStripMenuItem1_Click);
             // 

@@ -82,8 +82,10 @@ namespace XmlJsonServislerineBaglanma
 
             if (form == null || form.IsDisposed)
             {
-                form = new BrowserForm(new Uri(url), seciliFirma.name);
-                form.StartPosition = FormStartPosition.CenterScreen;
+                form = new BrowserForm(new Uri(url), seciliFirma.name)
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 //form.WindowState = FormWindowState.Maximized;
                 form.Show();
             }
