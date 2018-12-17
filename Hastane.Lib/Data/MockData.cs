@@ -4,8 +4,11 @@ namespace Hastane.Lib.Data
 {
     public class MockData
     {
+        public Context Context { get; set; }
         public MockData()
         {
+            Context = new Context();
+
             for (int i = 0; i < 10; i++)
             {
                 Context.Hastalar.Add(new Hasta()
@@ -30,7 +33,7 @@ namespace Hastane.Lib.Data
                     Servis = FakeData.EnumData.GetElement<Servis>()
                 });
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Context.Hemsireler.Add(new Hemsire()
                 {
