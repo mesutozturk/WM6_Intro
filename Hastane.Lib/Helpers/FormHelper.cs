@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Hastane.Lib.Models;
 
 namespace Hastane.Lib.Helpers
 {
@@ -23,6 +25,11 @@ namespace Hastane.Lib.Helpers
                     pcb.Image = null;
 
             }
+        }
+
+        public static void ListBoxYenile<T>(ListBox lstBox, List<T> data) where T:Kisi
+        {
+            lstBox.DataSource = data;
         }
     }
 }
