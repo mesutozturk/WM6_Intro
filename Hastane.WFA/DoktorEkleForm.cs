@@ -1,11 +1,11 @@
 ﻿using Hastane.Lib.Business;
+using Hastane.Lib.Helpers;
 using Hastane.Lib.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using Hastane.Lib.Data;
 
 namespace Hastane.WFA
 {
@@ -26,8 +26,6 @@ namespace Hastane.WFA
         private void cmbServis_SelectedIndexChanged(object sender, EventArgs e)
         {
             Servis servis = (Servis)Enum.Parse(typeof(Servis), cmbServis.SelectedItem.ToString());
-
-
             lstDoktorlar.DataSource = Form1.Context.Doktorlar
                 .Where(x => x.Servis == servis)
                 .ToList();
@@ -51,7 +49,7 @@ namespace Hastane.WFA
                     doktorBusiness.Cikart(dr, hms);
                 }
             }
-            lstDoktorlar_SelectedIndexChanged(sender,e);
+            lstDoktorlar_SelectedIndexChanged(sender, e);
         }
 
         private void lstDoktorlar_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,16 +83,21 @@ namespace Hastane.WFA
             }
 
             chlstHemsire.DataSource = gosterilecekHemsireler;
-           
+
 
             for (int i = 0; i < gosterilecekHemsireler.Count; i++)
             {
                 var hms = gosterilecekHemsireler[i];
-                if (hms.AtandiMi)
-                    chlstHemsire.SetItemCheckState(i, CheckState.Checked);
-                else
-                    chlstHemsire.SetItemCheckState(i, CheckState.Unchecked);
+                chlstHemsire.SetItemCheckState(i, hms.AtandiMi ? CheckState.Checked : CheckState.Unchecked);
             }
+        }
+
+        private void txtAra_KeyUp(object sender, KeyEventArgs e)
+        {
+            Servis servis = (Servis)Enum.Parse(typeof(Servis), cmbServis.SelectedItem.ToString());
+            List<Doktor> servisinDoktorlari = Form1.Context.Doktorlar.Where(x => x.Servis == servis).ToList();
+
+            lstDoktorlar.DataSource = KisiHelper.Ara<Doktor>(servisinDoktorlari, txtAra.Text);
         }
     }
 }
