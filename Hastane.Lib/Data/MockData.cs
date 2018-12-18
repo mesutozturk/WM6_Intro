@@ -9,7 +9,7 @@ namespace Hastane.Lib.Data
         {
             Context = new Context();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 90; i++)
             {
                 Context.Hastalar.Add(new Hasta()
                 {
