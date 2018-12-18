@@ -21,6 +21,7 @@ namespace Hastane.WFA
 
         private DoktorEkleForm frmDoktor;
         private RandevuForm frmRandevu;
+        private RandevuRaporForm frmRandevuRaporForm;
         private void doktorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmDoktor == null || frmDoktor.IsDisposed)
@@ -66,6 +67,19 @@ namespace Hastane.WFA
                     MdiParent = this
                 };
                 frmRandevu.Show();
+            }
+        }
+
+        private void raporlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmRandevuRaporForm == null || frmRandevuRaporForm.IsDisposed)
+            {
+                frmRandevuRaporForm = new RandevuRaporForm()
+                {
+                    Text = "Randevu Raporları",
+                    MdiParent = this
+                };
+                frmRandevuRaporForm.Show();
             }
         }
     }

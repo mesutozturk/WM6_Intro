@@ -105,15 +105,16 @@
             // randevuAlToolStripMenuItem
             // 
             this.randevuAlToolStripMenuItem.Name = "randevuAlToolStripMenuItem";
-            this.randevuAlToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.randevuAlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.randevuAlToolStripMenuItem.Text = "Randevu Al";
             this.randevuAlToolStripMenuItem.Click += new System.EventHandler(this.randevuAlToolStripMenuItem_Click);
             // 
             // raporlarToolStripMenuItem
             // 
             this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
-            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.raporlarToolStripMenuItem.Text = "Raporlar";
+            this.raporlarToolStripMenuItem.Click += new System.EventHandler(this.raporlarToolStripMenuItem_Click);
             // 
             // veriToolStripMenuItem
             // 

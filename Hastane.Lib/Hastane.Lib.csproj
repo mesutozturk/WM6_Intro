@@ -66,6 +66,7 @@
     <Compile Include="Models\Personel.cs" />
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\RandevuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

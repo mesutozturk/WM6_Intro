@@ -71,6 +71,12 @@
     <Compile Include="RandevuForm.Designer.cs">
       <DependentUpon>RandevuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RandevuRaporForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RandevuRaporForm.Designer.cs">
+      <DependentUpon>RandevuRaporForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DoktorEkleForm.resx">
       <DependentUpon>DoktorEkleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="RandevuForm.resx">
       <DependentUpon>RandevuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandevuRaporForm.resx">
+      <DependentUpon>RandevuRaporForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

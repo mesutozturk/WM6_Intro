@@ -141,6 +141,7 @@ namespace Hastane.WFA
             });
             Renklendir();
             RandevulariDoldur();
+            btnRandevuKaydet.Visible = false;
         }
     }
 }
