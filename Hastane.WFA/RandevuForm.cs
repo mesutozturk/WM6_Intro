@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Hastane.Lib.Helpers;
+using Hastane.Lib.Models;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Hastane.Lib.Helpers;
-using Hastane.Lib.Models;
 
 namespace Hastane.WFA
 {
@@ -93,7 +89,7 @@ namespace Hastane.WFA
         }
         private void RandevulariDoldur()
         {
-            var tumRandevular = Form1.Context.Randevular.Where(x => x.Doktor == seciliDoktor);
+            var tumRandevular = Form1.Context.Randevular.Where(x => x.Doktor.Id == seciliDoktor.Id);
             foreach (var randevu in tumRandevular)
             {
                 Button kapatilacakButton = flpSaatler.Controls[randevu.Saat] as Button;
@@ -128,7 +124,7 @@ namespace Hastane.WFA
         {
             int saat = RandevuHelper.Saatler.IndexOf(seciliButon.Text);
             var durum = Form1.Context.Randevular
-                .FirstOrDefault(x => x.Hasta == seciliHasta && x.Saat == saat);
+                .FirstOrDefault(x => x.Hasta.Id == seciliHasta.Id && x.Saat == saat);
             if (durum != null)
             {
                 string mesaj =
